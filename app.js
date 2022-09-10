@@ -1,0 +1,30 @@
+const morgan = require('morgan')
+const user = require("./routes/user");
+const auth = require("./routes/auth");
+const mongoose= require("mongoose")
+const express = require("express");
+const cors =require("cors")
+const app = express();
+const port = 3000;
+
+
+mongoose
+  .connect("mongodb://localhost:27017/BabyStore")
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Example app listening at http://localhost:${port}`);
+    });
+  })
+  .catch((e) => console.error(e));
+
+app.use(require("morgan")("dev"));
+app.use(cors());
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use("/user", user);
+app.use("/auth", auth);
+

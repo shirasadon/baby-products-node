@@ -1,0 +1,28 @@
+{
+  "name": "baby-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon node .",
+    "prettier": "npx prettier --write .",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "2.4.3",
+    "cors": "^2.8.5",
+    "express": "4.17.2",
+    "joi": "17.6.0",
+    "mongoose": "6.2.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.15",
+    "prettier": "2.5.1"
+  }
+}
