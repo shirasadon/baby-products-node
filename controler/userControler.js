@@ -7,13 +7,13 @@ const generateAuthToken = (user) => {
   });
 };
 
-const addUser = (name, email, phone, password, biz) => {
+const addUser = (name, phone, password, email, biz) => {
   return new Promise((resolve, reject) => {
     let user = new User({
       name,
-      email,
       phone,
       password,
+      email,
       biz,
     });
     user.save((err, userData) => {
@@ -24,5 +24,5 @@ const addUser = (name, email, phone, password, biz) => {
 
 module.exports = {
   generateAuthToken,
-  addUser
+  addUser,
 };

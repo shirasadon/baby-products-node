@@ -1,12 +1,11 @@
-const morgan = require('morgan')
+const morgan = require("morgan");
 const user = require("./routes/user");
 const auth = require("./routes/auth");
-const mongoose= require("mongoose")
+const mongoose = require("mongoose");
 const express = require("express");
-const cors =require("cors")
+const cors = require("cors");
 const app = express();
 const port = 3000;
-
 
 mongoose
   .connect("mongodb://localhost:27017/BabyStore")
@@ -27,4 +26,3 @@ app.use(
 );
 app.use("/user", user);
 app.use("/auth", auth);
-
