@@ -30,3 +30,4 @@ app.use("/user", user);
 app.use("/auth", auth);
 app.use("/articles",article);
 app.use("/products",products)
+

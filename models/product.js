@@ -17,6 +17,10 @@ const schema = new mongoose.Schema(
          type: String,
           required:true
     },
+    category:{
+      type: String,
+      required: true,
+    }
 },
 { timestamps: true }
     )
@@ -30,7 +34,8 @@ function validateProduct(product) {
    description: Joi.string()
       .min(6)
       .max(2000)
-      .required()
+      .required(),
+      category: Joi.string().min(4).max(30).required(),
   });
 
   return schema.validate(product);

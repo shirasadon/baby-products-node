@@ -18,7 +18,7 @@ router.post( "/" ,auth,async(req,res) =>{
     })
 })
 
-router.get("/",auth,(req,res)=>{
+router.get("/",auth,async(req,res)=>{
 getArticles()
 .then((article)=>{
     res.json(article)
