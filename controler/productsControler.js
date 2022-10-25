@@ -29,6 +29,14 @@ const createProduct=(img,title,description,category)=>{
      });
    };
    
+   const getChairsaftyProduct=()=>{
+      return new Promise ((resolve,reject)=>{
+         Product.find({category:"chairsafty"})
+         .then((producCar)=>{
+            producCar?resolve(producCar):reject(err)
+         });
+     });
+   };
 
  
-    module.exports={createProduct,getToysProduct,getBabycarrigesProduct}
+    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct}
