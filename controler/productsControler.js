@@ -37,6 +37,13 @@ const createProduct=(img,title,description,category)=>{
          });
      });
    };
-
+   const getclothingAndFootweareProduct=()=>{
+      return new Promise ((resolve,reject)=>{
+         Product.find({category:"cloth"})
+         .then((product)=>{
+            product?resolve(product):reject(err)
+         });
+     });
+   };
  
-    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct}
+    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct}
