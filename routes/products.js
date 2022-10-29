@@ -2,7 +2,7 @@ const express=require("express")
 const router= express.Router()
 const auth=require("../midelweare/auth")
 const {validateProduct, Product}=require("../models/product")
-const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct}=require("../controler/productsControler")
+const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct}=require("../controler/productsControler")
 router.post( "/" ,auth,async(req,res) =>{
     const {error}=validateProduct(req.body) 
     if(error){
@@ -59,5 +59,13 @@ router.get("/clothingandfootweare",auth,(req,res)=>{
     res.json(err)
 )
 })
-
+router.get("/furniture",auth,(req,res)=>{
+    getFurnitureProduct()
+.then((product)=>{
+    res.json(product)
+})
+.catch((err)=>
+    res.json(err)
+)
+})
 module.exports = router;

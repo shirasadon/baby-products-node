@@ -45,5 +45,12 @@ const createProduct=(img,title,description,category)=>{
          });
      });
    };
- 
-    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct}
+   const getFurnitureProduct=()=>{
+      return new Promise ((resolve,reject)=>{
+         Product.find({category:"furniture"})
+         .then((product)=>{
+            product?resolve(product):reject(err)
+         });
+     });
+   };
+    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct}
