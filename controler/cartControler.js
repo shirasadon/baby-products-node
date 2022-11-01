@@ -22,6 +22,20 @@ const insertProductToCart = (title,description,img,category) => {
     });
   };
   
+  const deleteproductFromCart=(_id)=>{
+    return new Promise((resolve, reject) => {
+        Cart.deleteOne(
+          {},
+          {
+            _id,
+          },
+          (err, product) => {
+            err ? reject(err) : resolve(product);
+          }
+          )
+      
+  })
+}
   module.exports={
-    insertProductToCart,getAllProductsInCart
+    insertProductToCart,getAllProductsInCart,deleteproductFromCart
   }
