@@ -53,4 +53,25 @@ const createProduct=(img,title,description,category)=>{
          });
      });
    };
-    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct}
+   const ViewAllProducts=()=>{
+      return new Promise ((resolve,reject)=>{
+         Product.find()
+         .then((products)=>{
+            products?resolve(products):reject(err)
+         });
+     });
+   };
+
+   const updateProduct = (_id, title, description, category,img) => {
+      return new Promise((resolve, reject) => {
+        Product.findByIdAndUpdate(_id, { $set: { _id, title, description, category,img } })
+          .then((product) => {
+            resolve(product);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    };
+   
+    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct}

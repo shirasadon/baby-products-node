@@ -2,7 +2,7 @@ const express=require("express")
 const router= express.Router()
 const auth=require("../midelweare/auth")
 const {validateProduct, Product}=require("../models/product")
-const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct}=require("../controler/productsControler")
+const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct}=require("../controler/productsControler")
 router.post( "/" ,auth,async(req,res) =>{
     const {error}=validateProduct(req.body) 
     if(error){
@@ -68,4 +68,31 @@ router.get("/furniture",auth,(req,res)=>{
     res.json(err)
 )
 })
+
+router.get("/ViewAllProducts",auth,(req,res)=>{
+    ViewAllProducts()
+.then((products)=>{
+    res.json(products)
+})
+.catch((err)=>
+    res.json(err)
+)
+})
+router.put("/:id", auth, (req, res) => {
+    const id = req.params.id;
+    const title = req.body.title;
+    const description = req.body.description;
+    const category = req.body.category;
+    const img = req.body.img;
+    updateProduct(id, title, description, category,img)
+      .then((product) => {
+        console.log(product);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
+
+
+
 module.exports = router;
