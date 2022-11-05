@@ -74,4 +74,17 @@ const createProduct=(img,title,description,category)=>{
       });
     };
    
-    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct}
+    const deleteProduct = (_id) => {
+      return new Promise((resolve, reject) => {
+        Product.deleteOne(
+          {},
+          {
+            _id,
+          },
+          (err, product) => {
+            err ? reject(err) : resolve(product);
+          }
+        );
+      });
+    };
+    module.exports={createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct,deleteProduct}

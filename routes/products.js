@@ -2,7 +2,7 @@ const express=require("express")
 const router= express.Router()
 const auth=require("../midelweare/auth")
 const {validateProduct, Product}=require("../models/product")
-const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct}=require("../controler/productsControler")
+const {createProduct,getToysProduct,getBabycarrigesProduct,getChairsaftyProduct,getclothingAndFootweareProduct,getFurnitureProduct,ViewAllProducts,updateProduct,deleteProduct}=require("../controler/productsControler")
 router.post( "/" ,auth,async(req,res) =>{
     const {error}=validateProduct(req.body) 
     if(error){
@@ -93,6 +93,16 @@ router.put("/:id", auth, (req, res) => {
       });
   });
 
-
+  router.delete("/:id", auth, (req, res) => {
+    const _id = req.params.id;
+    deleteProduct(_id)
+      .then((product) => {
+        console.log(_id);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
+  
 
 module.exports = router;
