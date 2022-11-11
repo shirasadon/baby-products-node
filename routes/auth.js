@@ -2,8 +2,7 @@ const { User } = require("../models/user.js");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
-const { generateAuthToken}
-=require("../controler/userControler")
+const { generateAuthToken } = require("../controler/userControler");
 
 router.post("/", async (req, res) => {
   try {

@@ -2,8 +2,8 @@ const morgan = require("morgan");
 const user = require("./routes/user");
 const auth = require("./routes/auth");
 const article = require("./routes/article");
-const products=require("./routes/products")
-const cart =require("./routes/cart")
+const products = require("./routes/products");
+const cart = require("./routes/cart");
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
@@ -29,6 +29,6 @@ app.use(
 );
 app.use("/user", user);
 app.use("/auth", auth);
-app.use("/articles",article);
-app.use("/products",products)
-app.use("/cart",cart)
+app.use("/articles", article);
+app.use("/products", products);
+app.use("/cart", cart);
