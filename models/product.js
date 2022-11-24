@@ -25,9 +25,15 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+  
+  price: {
+    type: String,
+    required: true,
   },
+},
   { timestamps: true }
 );
+
 
 const Product = mongoose.model("Product", schema);
 
@@ -38,6 +44,8 @@ function validateProduct(product) {
     description: Joi.string().min(6).max(2000).required(),
     category: Joi.string().min(4).max(30).required(),
     alt: Joi.string().min(5).max(1000).required(),
+    price: Joi.string().min(2).max(1000).required(),
+
   });
 
   return schema.validate(product);

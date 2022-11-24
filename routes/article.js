@@ -25,4 +25,16 @@ router.get("/", auth, async (req, res) => {
     })
     .catch((err) => res.json(err));
 });
+
+router.get("/:id", auth, async (req, res) => {
+  getArticleById(req.params.id)
+    .then((article) => {
+      res.json(article);
+    })
+    .catch((err) => res.json(err));
+});
 module.exports = router;
+
+
+
+

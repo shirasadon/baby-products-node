@@ -18,8 +18,8 @@ router.post("/", auth, async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const { img, title, description, category, alt } = req.body;
-  createProduct(img, title, description, category, alt)
+  const { img, title, description, category, alt,price } = req.body;
+  createProduct(img, title, description, category, alt,price)
     .then((dataProduct) => {
       res.json(dataProduct);
     })
@@ -81,8 +81,9 @@ router.put("/:id", auth, (req, res) => {
   const category = req.body.category;
   const img = req.body.img;
   const alt = req.body.alt;
+  const price=req.body.price
 
-  updateProduct(id, title, description, category, img, alt)
+  updateProduct(id, title, description, category, img, alt,price)
     .then((product) => {
       console.log(product);
     })
@@ -93,6 +94,7 @@ router.put("/:id", auth, (req, res) => {
 
 router.delete("/:id", auth, (req, res) => {
   const id = req.params.id;
+  console.log(id);
   deleteProduct(id)
     .then((product) => {
         res.json(product);

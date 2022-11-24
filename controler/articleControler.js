@@ -22,7 +22,16 @@ const getArticles = () => {
   });
 };
 
+const getArticleById = (_id) => {
+  return new Promise((resolve, reject) => {
+    Article.findById(_id, (err, article) => {
+      article ? resolve(article) : reject(err);
+    });
+  });
+};
+
 module.exports = {
   createArticle,
   getArticles,
+  getArticleById
 };

@@ -1,6 +1,6 @@
 const { Product } = require("../models/product");
 
-const createProduct = (img, title, description, category, alt) => {
+const createProduct = (img, title, description, category, alt,price) => {
   return new Promise((resolve, reject) => {
     let product = new Product({
       img,
@@ -8,6 +8,7 @@ const createProduct = (img, title, description, category, alt) => {
       description,
       category,
       alt,
+      price
     });
     product.save((err, productData) => {
       productData ? resolve(productData) : reject(err);
@@ -59,10 +60,10 @@ const ViewAllProducts = () => {
   });
 };
 
-const updateProduct = (_id, title, description, category, img, alt) => {
+const updateProduct = (_id, title, description, category, img, alt,price) => {
   return new Promise((resolve, reject) => {
     Product.findByIdAndUpdate(_id, {
-      $set: { _id, title, description, category, img, alt },
+      $set: { _id, title, description, category, img, alt,price },
     })
       .then((product) => {
         resolve(product);
@@ -75,15 +76,17 @@ const updateProduct = (_id, title, description, category, img, alt) => {
 
 const deleteProduct = (_id) => {
   return new Promise((resolve, reject) => {
-    Product.deleteOne(
-      {},
-      {
-        _id,
-      },
-      (err, product) => {
-        err ? reject(err) : resolve(product);
-      }
-    );
+    Product.findByIdAndRemove(_id, 
+     
+
+     )
+     .then((product) => {
+      resolve(product);
+    })
+    .catch((err) => {
+      reject(err);
+    });
+  
   });
 };
 module.exports = {

@@ -23,17 +23,19 @@ const getAllProductsInCart = () => {
 
 const deleteproductFromCart = (_id) => {
   return new Promise((resolve, reject) => {
-    Cart.deleteOne(
-      {},
-      {
-        _id,
-      },
-      (err, product) => {
-        err ? reject(err) : resolve(product);
-      }
-    );
+    Cart.findByIdAndRemove(_id,
+     
+     )
+     .then((product) => {
+      resolve(product);
+    })
+    .catch((err) => {
+      reject(err);
+    });
   });
 };
+
+
 module.exports = {
   insertProductToCart,
   getAllProductsInCart,
